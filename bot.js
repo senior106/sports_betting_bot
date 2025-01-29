@@ -74,7 +74,7 @@ bot.action('start', (ctx) => {
 
 bot.action('NFL', async (ctx) => {
   try {
-    const info = await axios.get('https://api.the-odds-api.com/v4/sports/americanfootball_nfl/events?apiKey=1caa56bfd18b0f4c1f6dd37a2a0b7bd2')
+    const info = await axios.get(`https://api.the-odds-api.com/v4/sports/americanfootball_nfl/events?apiKey=${process.env.API_KEY}`)
     // console.log('info :>> ', info.data);
     // await ctx.editMessageMedia({
     //   type:'photo',
@@ -133,7 +133,7 @@ bot.action('NFL', async (ctx) => {
 
 bot.action('Soccer', async (ctx) => {
   try {
-    const info = await axios.get('https://api.the-odds-api.com/v4/sports/soccer/events?apiKey=1caa56bfd18b0f4c1f6dd37a2a0b7bd2')
+    const info = await axios.get(`https://api.the-odds-api.com/v4/sports/soccer/events?apiKey=${process.env.API_KEY}`)
     if(info.data.length != 0)
       await ctx.editMessageText(
         `Select a ⚽ NFL event to view predictions: \n`
@@ -186,7 +186,7 @@ bot.action('Soccer', async (ctx) => {
 
 bot.action('NBA', async (ctx) => {
   try {
-    const info = await axios.get('https://api.the-odds-api.com/v4/sports/basketball_nba/events?apiKey=1caa56bfd18b0f4c1f6dd37a2a0b7bd2')
+    const info = await axios.get(`https://api.the-odds-api.com/v4/sports/basketball_nba/events?apiKey=${process.env.API_KEY}`)
     if(info.data.length != 0)
       await ctx.editMessageText(
         `Select a 🏀 NBA event to view predictions: \n`
@@ -239,7 +239,7 @@ bot.action('NBA', async (ctx) => {
 
 bot.action('NHL', async (ctx) => {
   try {
-    const info = await axios.get('https://api.the-odds-api.com/v4/sports/icehockey_nhl/events?apiKey=1caa56bfd18b0f4c1f6dd37a2a0b7bd2')
+    const info = await axios.get(`https://api.the-odds-api.com/v4/sports/icehockey_nhl/events?apiKey=${process.env.API_KEY}`)
     if(info.data.length != 0)
       await ctx.editMessageText(
         `Select a 🏒 NHL event to view predictions: \n`
@@ -292,7 +292,7 @@ bot.action('NHL', async (ctx) => {
 
 bot.action('MLB', async (ctx) => {
   try {
-    const info = await axios.get('https://api.the-odds-api.com/v4/sports/baseball_mlb/events?apiKey=1caa56bfd18b0f4c1f6dd37a2a0b7bd2')
+    const info = await axios.get(`https://api.the-odds-api.com/v4/sports/baseball_mlb/events?apiKey=${process.env.API_KEY}`)
     if(info.data.length != 0)
       await ctx.editMessageText(
         `Select a ⚾ MLB event to view predictions: \n`
@@ -345,7 +345,7 @@ bot.action('MLB', async (ctx) => {
 
 bot.action('UFC/MMA', async (ctx) => {
   try {
-    const info = await axios.get('https://api.the-odds-api.com/v4/sports/mma_mixed_martial_arts/events?apiKey=1caa56bfd18b0f4c1f6dd37a2a0b7bd2')
+    const info = await axios.get(`https://api.the-odds-api.com/v4/sports/mma_mixed_martial_arts/events?apiKey=${process.env.API_KEY}`)
     if(info.data.length != 0)
       await ctx.editMessageText(
         `Select a 🥊 UFC/MMA event to view predictions: \n`
@@ -399,7 +399,7 @@ bot.action('UFC/MMA', async (ctx) => {
 bot.action(/^NFL:\d+$/, async (ctx) => {
   try {
     const index = ctx.callbackQuery.data.split(':')[1];
-    const info = await axios.get('https://api.the-odds-api.com/v4/sports/americanfootball_nfl/events?apiKey=1caa56bfd18b0f4c1f6dd37a2a0b7bd2')
+    const info = await axios.get(`https://api.the-odds-api.com/v4/sports/americanfootball_nfl/events?apiKey=${process.env.API_KEY}`)
     // console.log(info.data[index - 1])
     await ctx.editMessageText(
       `🏆 ${info.data[index - 1].home_team} vs ${info.data[index - 1].away_team} \n`
@@ -424,7 +424,7 @@ bot.action(/^NFL:\d+$/, async (ctx) => {
 bot.action(/^Soccer:\d+$/, async (ctx) => {
   try {
     const index = ctx.callbackQuery.data.split(':')[1];
-    const info = await axios.get('https://api.the-odds-api.com/v4/sports/soccer/events?apiKey=1caa56bfd18b0f4c1f6dd37a2a0b7bd2')
+    const info = await axios.get(`https://api.the-odds-api.com/v4/sports/soccer/events?apiKey=${process.env.API_KEY}`)
     // console.log(info.data[index - 1])
     await ctx.editMessageText(
       `🏆 ${info.data[index - 1].home_team} vs ${info.data[index - 1].away_team} \n`
@@ -449,7 +449,7 @@ bot.action(/^Soccer:\d+$/, async (ctx) => {
 bot.action(/^NBA:\d+$/, async (ctx) => {
   try {
     const index = ctx.callbackQuery.data.split(':')[1];
-    const info = await axios.get('https://api.the-odds-api.com/v4/sports/basketball_nba/events?apiKey=1caa56bfd18b0f4c1f6dd37a2a0b7bd2')
+    const info = await axios.get(`https://api.the-odds-api.com/v4/sports/basketball_nba/events?apiKey=${process.env.API_KEY}`)
     // console.log(info.data[index - 1])
     await ctx.editMessageText(
       `🏆 ${info.data[index - 1].home_team} vs ${info.data[index - 1].away_team} \n`
@@ -474,7 +474,7 @@ bot.action(/^NBA:\d+$/, async (ctx) => {
 bot.action(/^NHL:\d+$/, async (ctx) => {
   try {
     const index = ctx.callbackQuery.data.split(':')[1];
-    const info = await axios.get('https://api.the-odds-api.com/v4/sports/icehockey_nhl/events?apiKey=1caa56bfd18b0f4c1f6dd37a2a0b7bd2')
+    const info = await axios.get(`https://api.the-odds-api.com/v4/sports/icehockey_nhl/events?apiKey=${process.env.API_KEY}`)
     // console.log(info.data[index - 1])
     await ctx.editMessageText(
       `🏆 ${info.data[index - 1].home_team} vs ${info.data[index - 1].away_team} \n`
@@ -499,7 +499,7 @@ bot.action(/^NHL:\d+$/, async (ctx) => {
 bot.action(/^MLB:\d+$/, async (ctx) => {
   try {
     const index = ctx.callbackQuery.data.split(':')[1];
-    const info = await axios.get('https://api.the-odds-api.com/v4/sports/baseball_mlb/events?apiKey=1caa56bfd18b0f4c1f6dd37a2a0b7bd2')
+    const info = await axios.get(`https://api.the-odds-api.com/v4/sports/baseball_mlb/events?apiKey=${process.env.API_KEY}`)
     // console.log(info.data[index - 1])
     await ctx.editMessageText(
       `🏆 ${info.data[index - 1].home_team} vs ${info.data[index - 1].away_team} \n`
@@ -524,7 +524,7 @@ bot.action(/^MLB:\d+$/, async (ctx) => {
 bot.action(/^UFC:\d+$/, async (ctx) => {
   try {
     const index = ctx.callbackQuery.data.split(':')[1];
-    const info = await axios.get('https://api.the-odds-api.com/v4/sports/mma_mixed_martial_arts/events?apiKey=1caa56bfd18b0f4c1f6dd37a2a0b7bd2')
+    const info = await axios.get(`https://api.the-odds-api.com/v4/sports/mma_mixed_martial_arts/events?apiKey=${process.env.API_KEY}`)
     // console.log(info.data[index - 1])
     await ctx.editMessageText(
       `🏆 ${info.data[index - 1].home_team} vs ${info.data[index - 1].away_team} \n`
